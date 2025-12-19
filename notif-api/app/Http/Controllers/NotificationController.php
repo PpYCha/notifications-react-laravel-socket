@@ -23,7 +23,9 @@ class NotificationController extends Controller
         ]);
 
         // Emit to socket server
-        Http::post('http://localhost:3001/emit', [
+        Http::withHeaders([
+            'x-socket-key' => config('services.socket.key'),
+        ])->post(config('services.socket.url') . '/emit', [
             'room'  => 'user:1',
             'event' => 'notification:new',
             'data'  => $notification,

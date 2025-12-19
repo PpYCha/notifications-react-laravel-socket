@@ -64,27 +64,27 @@ function App() {
     setMessage("");
   };
 
-  useEffect(() => {
-    socket.connect();
+  // useEffect(() => {
+  //   socket.connect();
 
-    socket.on("connect", () => {
-      console.log("✅ Socket connected:", socket.id);
-    });
+  //   socket.on("connect", () => {
+  //     console.log("✅ Socket connected:", socket.id);
+  //   });
 
-    socket.emit("join", "user:1");
+  //   socket.emit("join", "user:1");
 
-    const handleNotification = (notif: Notification) => {
-      console.log("📩 Socket received:", notif);
-      setNotifications((prev) => [notif, ...prev]);
-    };
+  //   const handleNotification = (notif: Notification) => {
+  //     console.log("📩 Socket received:", notif);
+  //     setNotifications((prev) => [notif, ...prev]);
+  //   };
 
-    socket.on("notification:new", handleNotification);
+  //   socket.on("notification:new", handleNotification);
 
-    return () => {
-      socket.off("notification:new", handleNotification);
-      socket.disconnect();
-    };
-  }, []);
+  //   return () => {
+  //     socket.off("notification:new", handleNotification);
+  //     socket.disconnect();
+  //   };
+  // }, []);
 
   return (
     <div style={{ padding: 20, maxWidth: 500 }}>
